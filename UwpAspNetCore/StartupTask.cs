@@ -18,7 +18,7 @@ namespace UwpAspNetCore
                 .CreateDefaultBuilder()
                 .UseSetting("preventHostingStartup", "true")
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:80")
+                .UseUrls("http://+:80")
                 .Build();
 
             host.Run();

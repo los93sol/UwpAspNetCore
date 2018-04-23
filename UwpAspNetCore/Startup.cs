@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
+using UwpAspNetLib;
 
 namespace UwpAspNetCore
 {
@@ -21,22 +20,13 @@ namespace UwpAspNetCore
         public void ConfigureServices(IServiceCollection services)
         {
             var manager = new ApplicationPartManager();
+            var assemblies = new Assembly[] { Assembly.GetExecutingAssembly(), Assembly.Load("UwpAspNetLib"), Assembly.Load("UwpAspNetLib.Views") };
 
-            // Do some reflection to get at the internal stuff we need to override
-            var assembliesProviderType = Assembly.Load("Microsoft.AspNetCore.Mvc.Core").GetType("Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationAssembliesProvider");
-            var resolveAssembliesMethod = assembliesProviderType.GetMethod("ResolveAssemblies");
-
-            // Now implement enough of the internal functionality for things to pass
-            var assembliesProvider = Activator.CreateInstance(assembliesProviderType);
-            var applicationAssemblies = (IEnumerable<Assembly>)resolveAssembliesMethod.Invoke(assembliesProvider, new object[] { Assembly.GetExecutingAssembly() });
-
-            foreach (var assembly in applicationAssemblies)
+            foreach (var assembly in assemblies)
             {
-                // TODO: Find a better way to do this
-                manager.ApplicationParts.Add(new AssemblyPart(Assembly.Load("UwpAspNetLib")));
+                var factory = ApplicationPartFactory.GetApplicationPartFactory(assembly);
 
-                var partFactory = ApplicationPartFactory.GetApplicationPartFactory(assembly);
-                foreach (var part in partFactory.GetApplicationParts(assembly))
+                foreach (var part in factory.GetApplicationParts(assembly))
                 {
                     manager.ApplicationParts.Add(part);
                 }
@@ -47,16 +37,12 @@ namespace UwpAspNetCore
             {
 
             });
+
+            manager.FeatureProviders.Add(new UWPViewsFeatureProvider());
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //env.ApplicationName = "UwpAspNetLib";
-            //app.Run(async context =>
-            //{
-            //    await context.Response.WriteAsync($"Hello world! {DateTime.Now}");
-            //});
-
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

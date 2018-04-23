@@ -2,19 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <ResolvedRazorCompileToolset>RazorSdk</ResolvedRazorCompileToolset>
-    <RazorCompileOnBuild>true</RazorCompileOnBuild>
-    <!--<EmbedRazorGenerateSources>true</EmbedRazorGenerateSources>-->
-    <IncludeContentInPack>true</IncludeContentInPack>
   </PropertyGroup>
-
-  <!--
-  <ItemGroup>
-    <Content Include="Views\**\*.cshtml" />
-  </ItemGroup>
--->
+  
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.0-preview2-final" />
   </ItemGroup>
-
+  
 </Project>
