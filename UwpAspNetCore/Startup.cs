@@ -37,8 +37,6 @@ namespace UwpAspNetCore
             {
 
             });
-
-            manager.FeatureProviders.Add(new UWPViewsFeatureProvider());
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
