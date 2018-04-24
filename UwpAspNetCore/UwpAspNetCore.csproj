@@ -154,7 +154,9 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetDir)UwpAspNetLib.Views.dll" "$(TargetDir)AppX\UwpAspNetLib.Views.dll"</PostBuildEvent>
+    <PostBuildEvent>xcopy /Y "$(TargetDir)UwpAspNetLib.Views.dll" "$(TargetDir)AppX\"
+mkdir "$(TargetDir)AppX\wwwroot
+xcopy /Y /E "$(TargetDir)wwwroot" "$(TargetDir)AppX\wwwroot\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
