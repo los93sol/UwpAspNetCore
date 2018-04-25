@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using UwpAspNetLib.Hubs;
 
 namespace UwpAspNetCore
 {
@@ -42,6 +43,8 @@ namespace UwpAspNetCore
             //    options.MinimumSameSitePolicy = SameSiteMode.None;
             //});
 
+            services.AddSignalR();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -60,6 +63,11 @@ namespace UwpAspNetCore
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
             //app.UseCookiePolicy();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<Chat>("/chat");
+            });
 
             app.UseMvc(routes =>
             {

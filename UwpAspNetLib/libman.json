@@ -1,5 +1,6 @@
 {
   "defaultProvider": "cdnjs",
+  "version": "1.0",
   "libraries": [
     {
       "library": "twitter-bootstrap@3.3.7",
@@ -17,20 +18,6 @@
         "fonts/glyphicons-halflings-regular.woff",
         "fonts/glyphicons-halflings-regular.woff2"
       ]
-      /*
-      "library": "twitter-bootstrap@4.1.0",
-      "destination": "wwwroot/lib/bootstrap",
-      "files": [
-        "js/bootstrap.bundle.js",
-        "js/bootstrap.bundle.js.map",
-        "js/bootstrap.bundle.min.js",
-        "js/bootstrap.bundle.min.js.map",
-        "css/bootstrap.css",
-        "css/bootstrap.css.map",
-        "css/bootstrap.min.css",
-        "css/bootstrap.min.css.map"
-      ]
-      */
     },
     {
       "library": "jquery@3.3.1",
@@ -39,6 +26,25 @@
         "jquery.js",
         "jquery.min.js",
         "jquery.min.map"
+      ]
+    },
+    {
+      "provider": "filesystem",
+      "library": "node_modules/@aspnet/signalr/dist/browser",
+      "destination": "wwwroot/lib/signalr",
+      "files": [
+        "signalr.js",
+        "signalr.js.map",
+        "signalr.min.js",
+        "signalr.min.js.map"
+      ]
+    },
+    {
+      "library": "vue@2.5.16",
+      "destination": "wwwroot/lib/vue",
+      "files": [
+        "vue.js",
+        "vue.min.js"
       ]
     }
   ]

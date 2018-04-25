@@ -23,7 +23,15 @@
     <PackageReference Include="Microsoft.AspNetCore.CookiePolicy" Version="2.1.0-preview2-final" />
     <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.1.0-preview2-final" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.0-preview2-final" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.0-preview2-final" />
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="1.0.20" />
+  </ItemGroup>
+ 
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\bootstrap\css\" />
+    <Folder Include="wwwroot\lib\bootstrap\fonts\" />
+    <Folder Include="wwwroot\lib\bootstrap\js\" />
+    <Folder Include="wwwroot\lib\jquery\" />
   </ItemGroup>
 
 </Project>
