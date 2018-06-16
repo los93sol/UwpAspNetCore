@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Before you can build this project you must have the following...",
   "devDependencies": {
-    "@aspnet/signalr": "1.0.0-preview2-final"
+    "@aspnet/signalr": "1.0.0"
   },
   "license": "ISC"
 }
