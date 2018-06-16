@@ -43,7 +43,7 @@ namespace UwpAspNetLib.Hubs
 
         public async Task JoinGroup(string groupName)
         {
-            await Groups.AddAsync(Context.ConnectionId, groupName);
+            await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
 
             await Clients.Group(groupName).SendAsync("Send", $"{Context.ConnectionId} joined {groupName}");
         }
@@ -52,7 +52,7 @@ namespace UwpAspNetLib.Hubs
         {
             await Clients.Group(groupName).SendAsync("Send", $"{Context.ConnectionId} left {groupName}");
 
-            await Groups.RemoveAsync(Context.ConnectionId, groupName);
+            await Groups.RemoveFromGroupAsync(Context.ConnectionId, groupName);
         }
 
         public Task Echo(string message)
