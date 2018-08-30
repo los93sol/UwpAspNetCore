@@ -131,19 +131,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore">
-      <Version>2.1.0</Version>
+      <Version>2.1.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Mvc">
-      <Version>2.1.0</Version>
+      <Version>2.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.SignalR">
-      <Version>1.0.0</Version>
+      <Version>1.0.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles">
-      <Version>2.1.0</Version>
+      <Version>2.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.1.5</Version>
+      <Version>6.1.7</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -158,8 +158,8 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy /Y "$(TargetDir)UwpAspNetLib.Views.dll" "$(TargetDir)AppX\"
-mkdir "$(TargetDir)AppX\wwwroot
-xcopy /Y /E "$(TargetDir)wwwroot" "$(TargetDir)AppX\wwwroot\"</PostBuildEvent>
+mkdir "$(TargetDir)AppX\wwwroot"
+xcopy /Y /E "$(SolutionDir)UwpAspNetLib\wwwroot" "$(TargetDir)AppX\wwwroot\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
