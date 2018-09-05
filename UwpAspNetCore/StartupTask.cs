@@ -17,7 +17,7 @@ namespace UwpAspNetCore
             var host = WebHost
                 .CreateDefaultBuilder()
                 .UseSetting("preventHostingStartup", "true")
-                .UseStartup<Startup>()
+                .UseStartup<UwpStartup>()
                 .UseUrls("http://+:80")
                 .Build();
 
